@@ -22,7 +22,52 @@ centertags]{article} %%
 \usepackage{textcomp}
 \usepackage[noend]{algorithmic}
 \usepackage[ruled]{algorithm}
+\usepackage{lipsum}
+\usepackage{indentfirst}
+\usepackage{babel}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+
+\pgfplotsset{model/.style = {blue, samples = 100}}
+\pgfplotsset{experiment/.style = {red}}
+
 \selectlanguage{russian}
+
+\setlength{\parindent}{2.4em}
+\setlength{\parskip}{0.1em}
+%\renewcommand{\baselinestretch}{2.0}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+ 
+ % Цвета для гиперссылок
+%\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+%\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+ 
+%\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+%\documentclass[aps,%
+%12pt,%
+%final,%
+%oneside,
+%onecolumn,%
+%musixtex, %
+%superscriptaddress,%
+%centertags]{article} %% 
+%\topmargin=-40pt
+%\textheight=650pt
+%\usepackage[english,russian]{babel}
+%\usepackage[utf8]{inputenc}
+%всякие настройки по желанию%
+%\usepackage[colorlinks=true,linkcolor=blue,unicode=true]{hyperref}
+%\usepackage{euscript}
+%\usepackage{supertabular}
+%\usepackage[pdftex]{graphicx}
+%\usepackage{amsthm,amssymb, amsmath}
+%\usepackage{textcomp}
+%\usepackage[noend]{algorithmic}
+%\usepackage[ruled]{algorithm}
+%\selectlanguage{russian}
 
 \begin{document}
 
@@ -79,13 +124,13 @@ centertags]{article} %%
   \item \textbf{$S$} - конечный вклад
   
 \end{itemize}
-\textbf{Def 1}: \textit{Простыми процентами} называются такие процентные ставки, которые применяются к одной и той же первоначальной сумме на протяжении всей финансовой операции \\
-\textbf{Def 2}: \textit{Сложными процентами} называются ставки, применяемые после каждого интервала начисления к сумме первоначального долга и начисленных за предыдущие интервалы процентов.
 
+Опр: \textit{Простыми процентами} называются такие процентные ставки, которые применяются к одной и той же первоначальной сумме на протяжении всей финансовой операции
+
+Опр: \textit{Сложными процентами} называются ставки, применяемые после каждого интервала начисления к сумме первоначального долга и начисленных за предыдущие интервалы процентов.
 \label{first_table}
 \begin{table}[H]
 	\begin{center}
-	
 		\begin{tabular}{c|c|c} 
 		t (год) & Простой процент (\%) & Сложный процент (\%) \\ \hline
 		0 & \textbf{100} & 100  \\ 
@@ -95,78 +140,79 @@ centertags]{article} %%
 	\caption{Пример использования сложных и простых процентов}
 	\end{center}
 \end{table}
-\begin{flushleft}
-	Для простых процентов получаем следующие формулы:
-\end{flushleft}
+\subsubsection{Формулы простых процентов}
+Формула для $S_{n+1}$: $$S_{n+1}=S_n+S_0\cdot i  $$
 
-\begin{itemize} 
-	\item Формула для $S_{n+1}$: $S_{n+1}=S_n+S_0\cdot i  $
-	\item Формула для конечного вклада: $S=P+P\cdot i\cdot n=P\cdot (1+i\cdot n) $
-	\item Формула для начального вклада: $P=\frac{S}{1+i\cdot n} $ 
-	\item Формула для процентной ставки: $i=\frac{\frac{S}{P}-1}{t}=\frac{S-P}{t\cdot P}$
-	\item Формула для продолжительности вклада: $ t=\frac{\frac{S}{P}-1}{i}=\frac{S-P}{i\cdot P}$
-\end{itemize}
-\begin{flushleft}
-	Для сложных процентов получаем следующие формулы:
-\end{flushleft}
+Формула для конечного вклада: $$S=P+P\cdot i\cdot n=P\cdot (1+i\cdot n) $$
 
-\begin{itemize} 
-	\item Формула для $S_{n+1}$: $S_{n+1}=S_n\cdot (1+i) = S_n + S_n\cdot i  $
-	\item Формула для конечного вклада: $S = P\cdot (1+i)^n $
-	\item Формула для начального вклада: $P=\frac{S}{(1+i)^n} $ 
-	\item Формула для процентной ставки: $i=\sqrt[t]{\frac{S}{P}}-1$
-	\item Формула для продолжительности вклада: $ t=log_{(1+i)} \frac{S}{P}$
-\end{itemize}
+Формула для начального вклада: $$P=\frac{S}{1+i\cdot n} $$
 
-\subsubsection{Срок удвоения вклада:}
+Формула для процентной ставки: $$i=\frac{\frac{S}{P}-1}{t}=\frac{S-P}{t\cdot P}$$
 
-\textbf {Для простого процента:} \\ [0.3cm]
-$2P=P\cdot(1+i\cdot t_{new})$ \\ [0.3cm]
-$t_{new}=\frac{1}{i}$ \\ [0.3cm]
-\textbf {Для простого процента:} \\ [0.3cm]
-$2P=P\cdot(1+i)^{t_{new}}$ \\ [0.3cm]
-$2 = (1+i)^{t_{new}}$ \\ [0.3cm]
-$t_{new}=log_{(1+i)} 2$ 
+Формула для продолжительности вклада: $$ t=\frac{\frac{S}{P}-1}{i}=\frac{S-P}{i\cdot P}$$
 
-\begin{flushleft}
-\subsubsection{Задача о.в Манхэттен:}
-\end{flushleft}
+\subsubsection{Формулы простых процентов}
+Формула для $S_{n+1}$: $$S_{n+1}=S_n\cdot (1+i) = S_n + S_n\cdot i  $$
+
+Формула для конечного вклада: $$S = P\cdot (1+i)^n $$
+
+Формула для начального вклада: $$P=\frac{S}{(1+i)^n} $$
+
+Формула для процентной ставки: $$i=\sqrt[t]{\frac{S}{P}}-1$$
+
+Формула для продолжительности вклада: $$ t=log_{(1+i)} \frac{S}{P}$$
+
+\subsubsection{Срок удвоения вклада}
+
+\textbf {Для простого процента:} 
+$$2P=P\cdot(1+i\cdot t_{new})$$ 
+$$t_{new}=\frac{1}{i}$$
+
+\textbf {Для сложного процента:} 
+$$2P=P\cdot(1+i)^{t_{new}}$$ 
+$$2 = (1+i)^{t_{new}}$$ 
+$$t_{new}=log_{(1+i)} 2 $$
+
+\subsubsection{Задача о.в Манхэттен}
 \label{second_table}
 \begin{table}[H]
 	\begin{center}
-	\caption{Данные о Манхэттене}
 		\begin{tabular}{c|c} 
 		t (год) & Деньги (\$) \\ \hline
 		$t_1$ - 1626 год & $P - 24$ \\ \hline
 		$t_2$ - 2019 год & $S - 49\cdot 10^9$
 		\end{tabular}
+		\caption{Данные о Манхэттене}
 	\end{center}
 \end{table}
-\begin{flushleft}
+
 \textbf{Вопрос}: Какова процентная ставка при простом и сложном проценте?
-\end{flushleft}
-\textbf{Решение:} \\
-Простой процент: \\[0.2cm]
-$i=\frac{\frac{S}{P}-1}{t}=\frac{S-P}{(t_2-t_1)\cdot P}=\frac{49\cdot 10^9-24}{24*(2019-1626)}=5.19 \cdot 10^6$ \\[0.5cm]
-Сложный процент: \\[0.2cm]
-$i=\sqrt[(t_2-t_1)]{\frac{S}{P}}-1=\sqrt[2019-1626]{\frac{49\cdot 10^9}{24}}-1 = 0.056 = 5.6\%$ \\[0.5cm]
-Срок удвоения оклада: \\[0.2cm]
-$t_{new}=log_{(1+i)} 2 = log_{(1+0.056)} 2 = 12.7 \approx 13$ лет
 
-\subsubsection{Смешанная ставка:}
+\textbf{Решение:}
 
-\textbf{Def 3}: \textit{Смешанная процентная ставка} - ставка, которая осуществляется по следующему правилу - в пределах года используется простая ставка, а остальные - по сложной  \\[0.3cm]
-Формула для смешанной процентной ставки: \\[0.3cm]
-$S = P\cdot (1+i_c)^{[t]} + P\cdot (1+i_c)^{[t]} \cdot {\{t\}}\cdot i_p = P(1+i_c)^{[t]} \cdot (1 + {\{t\}}\cdot i_p ) $ \\ [0.3cm]
+Простой процент: 
+$$i=\frac{\frac{S}{P}-1}{t}=\frac{S-P}{(t_2-t_1)\cdot P}=\frac{49\cdot 10^9-24}{24*(2019-1626)}=5.19 \cdot 10^6$$
+
+Сложный процент: 
+$$i=\sqrt[(t_2-t_1)]{\frac{S}{P}}-1=\sqrt[2019-1626]{\frac{49\cdot 10^9}{24}}-1 = 0.056 = 5.6\%$$
+
+Срок удвоения оклада: 
+$$t_{new}=log_{(1+i)} 2 = log_{(1+0.056)} 2 = 12.7 \approx 13 \text{ years}$$ 
+
+\subsubsection{Смешанная ставка}
+
+Опр: \textit{Смешанная процентная ставка} - ставка, которая осуществляется по следующему правилу - в пределах года используется простая ставка, а остальные - по сложной.
+
+Формула для смешанной процентной ставки:
+$$S = P\cdot (1+i_c)^{[t]} + P\cdot (1+i_c)^{[t]} \cdot {\{t\}}\cdot i_p = P(1+i_c)^{[t]} \cdot (1 + {\{t\}}\cdot i_p ) $$
 где ${[t]}$ - целая часть числа, а  ${\{t\}}$ - дробная.
-%\begin{figure}[h!]
+\begin{figure}[h!]
 \begin{center}
-
 \includegraphics[scale=0.6]{images/first.jpg}
+\caption{График простой, сложной и процентной ставки}
 
 \end{center}
-%\end{figure}
-
+\end{figure}
 \subsection{09.02.2020}
 
 
