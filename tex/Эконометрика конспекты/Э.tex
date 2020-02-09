@@ -14,7 +14,7 @@ centertags]{article} %%
 \usepackage[english,russian]{babel}
 \usepackage[utf8]{inputenc}
 %всякие настройки по желанию%
-\usepackage[colorlinks=true,linkcolor=blue,unicode=true]{hyperref}
+\usepackage[colorlinks=true,linkcolor=black,unicode=true]{hyperref}
 \usepackage{euscript}
 \usepackage{supertabular}
 \usepackage[pdftex]{graphicx}
@@ -84,15 +84,15 @@ centertags]{article} %%
 % Table of contents
 \begin{thebibliography}{3}
 \bibitem{eliseeva}
-И.И.Елисеева, Эконометрика
+Эконометрика: Учебник/И.И.Елисеева и др.-М.:Проспект, 2009
 \bibitem{praktikuma}
-И.И.Елисеева, Практикум по эконометрике 
+Практикум по эконометрике: Учебное пособие/И.И.Елисеева и др.,М.:Финансы и статистика,2006 
 \bibitem{dop1}
-Мхитаран, Эконометрика
+Эконометрика: Учебник/В. С.Мхитарян и др.-М.:2008
 \bibitem{dop2}
-Доугерти, Введение в эконометрику 
+Доугерти К. Введение в эконометрику: Учебник. 2-е изд. / Пер. с англ. – М.: ИНФРА – М, 2007
 \bibitem{dop3}
-Брендт Э., Практика эконометрики
+Берндт Э. Практика эконометрики: классика и современность. М.,2005
 \end{thebibliography}
 \tableofcontents
 \newpage
@@ -268,11 +268,12 @@ $$SS_T = SS_R + SS_E \eqno (13)$$
 
 где: 
 
-$SS_T  = \sum (Y - \overline{Y})^2 $  - общая сумма квадратов отклонений, \textbf{факторная сумма}
+$SS_T  = \sum (Y - \overline{Y})^2 $  - общая сумма квадратов отклонений \textit{(total sum of squares)}
 
-$SS_R = \sum (\hat{Y}-\overline{Y})^2 $ - \textbf{сумма квадратов отклонений, объясненная} регрессией
+$SS_R = \sum (\hat{Y}-\overline{Y})^2 $ - \textbf{сумма квадратов отклонений, объясненная} регрессией, \textbf{факторная сумма} \textit{(sum of square due to regression)}
 
-$SS_E = \sum (Y - \hat{Y})^2  = \sum e_i^2 $ - \textbf{остаточная сумма} квадратов отклонений.
+$SS_E = \sum (Y - \hat{Y})^2  = \sum e_i^2 $ - \textbf{остаточная сумма} квадратов отклонений,
+\textit{(sum of square due to error)}.
 
 Введем \textbf{коэффициент детерминации}:
 $$ R^2 = r^2 = \frac{\sigma_{y,obyasn}^2}{\sigma_{y,obch}^2} = \frac{SS_R}{SS_T} = 1 - \frac{SS_E}{SS_T} = 1 - \frac{\sum (Y - \hat{Y})^2}{\sum (Y - \overline{Y})^2} $$
@@ -668,22 +669,8 @@ $$121.061 \leq \hat{y_{x_{k=4}}} \leq162.097 $$
 	\end{tikzpicture}
 \end{center}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\textbf{Вывод}: таким образом, было разобрано, как делать доверительные интвералы для ошибки прогнозирования с помощью стандартной ошибки и средней ошибки прогнозирования.
+\newpage
 \subsection{Нелинейная регрессия}
 Будут рассмотрены два вида \textbf{нелинейной регресиии}:
 \begin{enumerate}
