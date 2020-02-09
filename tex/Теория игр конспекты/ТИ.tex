@@ -1,0 +1,93 @@
+\RequirePackage{ifluatex}
+\let\ifluatex\relax
+
+\documentclass[aps,%
+12pt,%
+final,%
+oneside,
+onecolumn,%
+musixtex, %
+superscriptaddress,%
+centertags]{article} %% 
+\topmargin=-40pt
+\textheight=650pt
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc}
+%всякие настройки по желанию%
+\usepackage[colorlinks=true,linkcolor=black,unicode=true]{hyperref}
+\usepackage{euscript}
+\usepackage{supertabular}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsthm,amssymb, amsmath}
+\usepackage{textcomp}
+\usepackage[noend]{algorithmic}
+\usepackage[ruled]{algorithm}
+\usepackage{lipsum}
+\usepackage{indentfirst}
+\usepackage{babel}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+
+\pgfplotsset{model/.style = {blue, samples = 100}}
+\pgfplotsset{experiment/.style = {red}}
+
+\selectlanguage{russian}
+
+\setlength{\parindent}{2.4em}
+\setlength{\parskip}{0.1em}
+%\renewcommand{\baselinestretch}{2.0}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+ 
+ % Цвета для гиперссылок
+%\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+%\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+ 
+%\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+\begin{document}
+
+\begin{titlepage} 
+\begin{center}
+% Upper part of the page
+%\textbf{\Large САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ} \\[1.0cm]
+%\textbf{\large Кафедра Прикладной Математики и Информатики}\\[3.5cm]
+ 
+% Title
+\textbf{}\\[10.0cm]
+\textbf{\LARGE Теория игр}\\[0.5cm]
+\textbf{\Large ПМ-1701} \\[0.1cm]
+
+%supervisor
+\begin{center} \large
+{Преподаватель:} \\[0.5cm]
+\textsc {Чернов Виктор Петрович}\\
+{viktor\_chernov@mail.ru}\\
+\end{center}
+% \begin{flushright} \large
+%\emph{Рецензент:} \\
+%д.ф. - м.н., профессор \textsc{Надеемся Нам Помогут}
+%\end{flushright}
+%\begin{flushright} \large
+%\emph{Заведующий кафедрой:} \\
+%д.ф. - м.н., профессор \textsc{Не Обмани Себя}
+%\end{flushright}
+\vfill 
+
+% Bottom of the page
+{\large {Санкт-Петербург}} \par
+{\large {2020 г., 6 семестр}}
+\end{center} 
+\end{titlepage}
+
+% Table of contents
+\begin{thebibliography}{3}
+\bibitem{eliseeva}
+Теория игр
+\end{thebibliography}
+\tableofcontents
+\newpage
+\section{10.02.2020}
+
+\end{document}
