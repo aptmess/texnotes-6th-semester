@@ -1,0 +1,137 @@
+\RequirePackage{ifluatex}
+\let\ifluatex\relax
+
+\documentclass[aps,%
+12pt,%
+final,%
+oneside,
+onecolumn,%
+musixtex, %
+superscriptaddress,%
+centertags]{article} %% 
+\topmargin=-40pt
+\textheight=650pt
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc}
+%всякие настройки по желанию%
+\usepackage[colorlinks=true,linkcolor=black,unicode=true]{hyperref}
+\usepackage{euscript}
+\usepackage{supertabular}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsthm,amssymb, amsmath}
+\usepackage{textcomp}
+\usepackage[noend]{algorithmic}
+\usepackage[ruled]{algorithm}
+\usepackage{lipsum}
+\usepackage{indentfirst}
+\usepackage{babel}
+\usepackage{pgfplots}
+\usepackage{setspace}
+\linespread{1.15}
+\pgfplotsset{compat=1.9}
+
+\pgfplotsset{model/.style = {blue, samples = 100}}
+\pgfplotsset{experiment/.style = {red}}
+
+\selectlanguage{russian}
+
+\setlength{\parindent}{2.4em}
+\setlength{\parskip}{0.1em}
+%\renewcommand{\baselinestretch}{2.0}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+ 
+ % Цвета для гиперссылок
+%\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+%\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+ 
+%\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+\begin{document}
+
+\begin{titlepage} 
+\begin{center}
+% Upper part of the page
+%\textbf{\Large САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ} \\[1.0cm]
+%\textbf{\large Кафедра Прикладной Математики и Информатики}\\[3.5cm]
+ 
+% Title
+\textbf{}\\[10.0cm]
+\textbf{\LARGE Методы прогнозирования}\\[0.5cm]
+\textbf{\Large ПМ-1701} \\[0.1cm]
+
+%supervisor
+\begin{center} \large
+{Преподаватель:} \\[0.5cm]
+\textsc {Ивахненко Дарья Александровна}\\
+{viktor\_chernov@mail.ru}\\
+\end{center}
+% \begin{flushright} \large
+%\emph{Рецензент:} \\
+%д.ф. - м.н., профессор \textsc{Надеемся Нам Помогут}
+%\end{flushright}
+%\begin{flushright} \large
+%\emph{Заведующий кафедрой:} \\
+%д.ф. - м.н., профессор \textsc{Не Обмани Себя}
+%\end{flushright}
+\vfill 
+
+% Bottom of the page
+{\large {Санкт-Петербург}} \par
+{\large {2020 г., 6 семестр}}
+\end{center} 
+\end{titlepage}
+
+% Table of contents
+\begin{thebibliography}{3}
+\bibitem{rob}
+Теория игр
+\end{thebibliography}
+\tableofcontents
+\newpage
+
+\section{11.02.2020}
+\subsection{Введение}
+Будем исследовать временные ряды и варианты его прогнозирования. В конце семестра перейдем к машинному обучению.
+
+Мы рассматривали введение в файле и семейство преобразований Бокса-Кокса:
+
+$$ y^{(\lambda)} = 
+\left\{
+\begin{matrix}
+\frac{y^{\lambda}-1}{\lambda}, \lambda \neq 0 \\
+\ln y, \lambda = 0
+\end{matrix} \right. \eqno $$
+$$ \lim_{\lambda \to 0}{\frac{y^{\lambda}-1}{\lambda}} = \lim_{\lambda \to 0}{\frac{\exp (\lambda \ln y)-1}{\lambda}} = \lim_{\lambda \to 0}{\frac{1+\lambda \ln y+O((\lambda \ln y)^2) - 1}{\lambda}} = \ln y $$
+
+$$y^{\lambda} = \frac{y^\lambda -1}{\lambda} $$
+
+
+$$
+\frac{\partial y^{\lambda} }{\partial \lambda} = \frac{\lambda y^{\lambda - 1}}{\lambda} = y^{\lambda-1} $$
+
+Параметр $\lambda$ можно найти с помощью метода максимального правдоподобия:
+$$ L = \prod_{i=1}^{T} {\frac{1}{\sqrt{2\pi}\cdot \sigma}} \cdot \exp \left ( {-\frac{({y_i^{(\lambda)} - \overline{y}^{(\lambda)})^2}}{\sigma^2}}\right) \cdot J(\lambda,y) \to \max $$
+
+Прологорифмируем:
+$$ \ln L = \sum_{i=1}^{T} \left ( \ln \frac{1}{\sqrt{2\pi}\cdot \sigma}  - \frac{({y_i^{(\lambda)} - \overline{y}^{(\lambda)})^2} }{2\sigma^2} + \ln J(\lambda,y) \right )  $$
+
+Воспользуемся оценкой выборочной дисперсии:
+$$ \hat{\sigma}^2 = \sum_{i=1}^{T} \frac{({y_i^{(\lambda)} - \overline{y}^{(\lambda)}})^2}{T} $$
+$$ \ln \frac{1}{\sqrt{2\pi \sigma^2}} = \ln \frac{1}{\sqrt{2\pi}} + \ln \frac{1}{\sqrt {\sigma^2}} = \ln \frac{1}{\sqrt{2\pi}} - \ln \frac{({y_i^{(\lambda)} - \overline{y}^{(\lambda)}})^2}{T}$$ 
+
+Тогда:
+$$ \ln L = \sum_{i=1}^{T} \ln \frac{1}{\sqrt{2\pi}} - \ln \frac{({y_i^{(\lambda)} - \overline{y}^{(\lambda)}})^2}{T} - \frac{T}{2} + \log \prod_{i=1}^{T} y_{i}^{\lambda - 1} = $$ 
+$$ = \sum_{i=1}^{T} \ln \frac{1}{\sqrt{2\pi}} - \ln \frac{({y_i^{(\lambda)} - \overline{y}^{(\lambda)}})^2}{T} - \frac{T}{2} + (\lambda - 1) \sum_{i=1} \ln y_{i}$$
+
+Взяв производную по параметру $\lambda$ и найдя решение, получим:
+
+$$ y^{(\lambda)} = 
+\left\{
+\begin{matrix}
+\frac{{y+\lambda_2}^{\lambda}-1}{\lambda_1}, \lambda_1 \neq 0 \\
+\ln (y+\lambda_2), \lambda_1 = 0
+\end{matrix} \right. \eqno $$
+
+\end{document}
