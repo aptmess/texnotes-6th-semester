@@ -123,15 +123,16 @@ $$ \ln \frac{1}{\sqrt{2\pi \sigma^2}} = \ln \frac{1}{\sqrt{2\pi}} + \ln \frac{1}
 
 Тогда:
 $$ \ln L = \sum_{i=1}^{T} \ln \frac{1}{\sqrt{2\pi}} - \ln \frac{({y_i^{(\lambda)} - \overline{y}^{(\lambda)}})^2}{T} - \frac{T}{2} + \log \prod_{i=1}^{T} y_{i}^{\lambda - 1} = $$ 
-$$ = \sum_{i=1}^{T} \ln \frac{1}{\sqrt{2\pi}} - \ln \frac{({y_i^{(\lambda)} - \overline{y}^{(\lambda)}})^2}{T} - \frac{T}{2} + (\lambda - 1) \sum_{i=1} \ln y_{i}$$
+$$ = \sum_{i=1}^{T} \ln \frac{1}{\sqrt{2\pi}} - \sum_{i=1}^{T} \ln \frac{({y_i^{(\lambda)} - \overline{y}^{(\lambda)}})^2}{T} - \frac{T}{2} + (\lambda - 1) \sum_{i=1} \ln y_{i} = -\frac{T}{2} \cdot \ln \sum_{i=1}^{T} \frac{({y_i^{(\lambda)} - \overline{y}^{(\lambda)}})^2}{T} + (\lambda - 1) \sum_{i=1} \ln y_{i} $$
 
-Взяв производную по параметру $\lambda$ и найдя решение, получим:
+Итого: логафрим функции правдоподобия Бокса-Кокса:
 
-$$ y^{(\lambda)} = 
-\left\{
-\begin{matrix}
-\frac{{y+\lambda_2}^{\lambda}-1}{\lambda_1}, \lambda_1 \neq 0 \\
-\ln (y+\lambda_2), \lambda_1 = 0
-\end{matrix} \right. \eqno $$
+$$ \ln L = -\frac{T}{2} \cdot \ln \sum_{i=1}^{T} \frac{({y_i^{(\lambda)} - \overline{y}^{(\lambda)}})^2}{T} + (\lambda - 1) \sum_{i=1} \ln y_{i} $$
 
+где $$\overline{y}^{(\lambda)} = \frac{1}{T} \sum y_i^{(\lambda)} $$
+
+$ T $ - количество элементов в выборке.
+
+
+Взяв производную по параметру $\lambda$ и прировняв к нулю, найдем решение, получим оценку методом максимального правдоподобия.
 \end{document}
