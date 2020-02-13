@@ -22,7 +22,25 @@ centertags]{article} %%
 \usepackage{textcomp}
 \usepackage[noend]{algorithmic}
 \usepackage[ruled]{algorithm}
+\usepackage{lipsum}
+\usepackage{indentfirst}
+\usepackage{babel}
+\usepackage{pgfplots}
+\usepackage{setspace}
+\linespread{1.15}
+\pgfplotsset{compat=1.9}
+
+\pgfplotsset{model/.style = {blue, samples = 100}}
+\pgfplotsset{experiment/.style = {red}}
+
 \selectlanguage{russian}
+
+\setlength{\parindent}{2.4em}
+\setlength{\parskip}{0.1em}
+%\renewcommand{\baselinestretch}{2.0}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -69,7 +87,28 @@ Liu G. R., Liu M. B. Smoothed particle hydrodynamics: a meshfree particle method
 \tableofcontents
 \newpage
 \section{Конспекты лекций}
-\subsection{06.02.2020} 
+\subsection{13.02.2020} 
+
+\textbf{Отчет о результатах:} в каких пределах можно менять коэффициенты целевой функции чтобы оптимальынй план не изменился.
+
+Перейдем к листу отчета об устойчивости.
+
+\textbf{Теневая цена} - предельная полезность ресурса, компонент оптимального плана двойственной задачи, частная производная целелвой функции по правой части ограничения - величина, показывает на сколько единиц изменится результат, если изменить правую часть на единицу.
+
+Представим задачу, меняем коэффициенты правой части, получили оптимальное решение $z^{*}$:
+$$CX \to max$$
+$$ \left\{
+\begin{matrix}
+AX \leq B \\ 
+X \geq 0
+\end{matrix}\right. $$
+$$ Z^{*} = Z(B) = Z(b_1,b_2,...,b_n)$$
+$$ \frac{\partial Z}{\partial b_i} =y_i^*$$
+где $y_i^*$ - теневые цены, компоненты оптимального плана.
+
+График предельной полезности является кусочно-линейным.
+
+Отчет о пределах - сомнительная польза: если объем печенья будем равны $0$, то остается один бисквит.
 
 
 
