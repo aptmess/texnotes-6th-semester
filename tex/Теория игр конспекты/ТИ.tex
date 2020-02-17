@@ -296,4 +296,54 @@ $$
 $$
 
 В данном примере в первой строке являются седловыми точками, но единица во второй строке не седловая точка, хоть и равна ей.
+
+\section{17.02.2020}
+Будем рассматривать переменные на прямоугольнике.
+
+Пусть задана функция $f(x.y)$ и играется в антоганистическую игру двумя соперниками. 
+Первый игрок выбирает значение $x$ на своем промежутке $x:a \leq x \leq b$, а второй игрок выбирает какое-то значение $y: c \leq y \leq d$. 
+
+Требуется определить механизим седловой точки.\newpage
+\textbf{Алгоритм нахождения седловой точки:}
+
+\begin{enumerate}
+  \item $ \underset{x}{\max} \text{ }\underset{y}{\max} \text{ }  f(x,y) $
+  \begin{enumerate}
+    \item $ \underset{y}{\min} \text{ } f(x,y) = g(x) $
+    \item $ \underset{x}{\max} \text{ } g(x) = A $
+  \end{enumerate}
+  \item $ \underset{y}{\min} \text{ }\underset{x}{\max} \text{ }  f(x,y) $
+  \begin{enumerate}
+    \item $ \underset{x}{\max} \text{ } f(x,y) = h(y) $
+    \item $ \underset{y}{\min} \text{ } h(y) = B $
+  \end{enumerate}
+  \item $A = B ?$
+
+\end{enumerate}
+
+Задача:
+$$ f(x,y) = (x-y)^2 $$
+$$ -1 \leq x \leq 1,-1 \leq y \leq 1 $$
+
+\textbf{Решение:}
+Найдем максимин:
+$$ \underset{y}{\min} \text{ } f(x,y) = (f(x,y))_y'  = -2x + 2y = g(x)$$
+$$ y = x $$
+$$ A = \underset{x}{\max} \text{ } g(x) = 0 $$
+
+Найдем минимакс:
+$$ \underset{x}{\max} \text{ } f(x,y) = (f(x,y))_x'  = 2x -  2y = h(y) \Rightarrow x = y$$
+
+При каждом y свое значение максимума:
+
+Исследуем границы:
+$$ \max (1-y)^2 = 4 \text{ ;  } \max (-1-y)^2 = 4 $$
+$$h(y) = \left\{\begin{matrix}
+(1-y)^2, -1 \leq y \leq 0\\ 
+(1+y)^2, 0 \leq y \leq 1
+\end{matrix}\right.$$
+$$ B = \underset{y}{\min} \text{ } h(y) = 1 $$
+
+Седловой точки нет, так как $A \neq B$
+
 \end{document}
