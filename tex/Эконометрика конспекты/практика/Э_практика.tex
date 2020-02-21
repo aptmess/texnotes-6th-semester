@@ -1,0 +1,169 @@
+\RequirePackage{ifluatex}
+\let\ifluatex\relax
+
+\documentclass[aps,%
+12pt,%
+final,%
+oneside,
+onecolumn,%
+musixtex, %
+superscriptaddress,%
+centertags]{article} %% 
+\topmargin=-40pt
+\textheight=650pt
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc}
+%всякие настройки по желанию%
+\usepackage[colorlinks=true,linkcolor=black,unicode=true]{hyperref}
+\usepackage{euscript}
+\usepackage{supertabular}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsthm,amssymb, amsmath}
+\usepackage{textcomp}
+\usepackage[noend]{algorithmic}
+\usepackage[ruled]{algorithm}
+\usepackage{lipsum}
+\usepackage{indentfirst}
+\usepackage{babel}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+
+\pgfplotsset{model/.style = {blue, samples = 100}}
+\pgfplotsset{experiment/.style = {red}}
+\selectlanguage{russian}
+
+\setlength{\parindent}{2.4em}
+\setlength{\parskip}{0.1em}
+%\renewcommand{\baselinestretch}{2.0}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+ 
+ % Цвета для гиперссылок
+%\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+%\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+ 
+%\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+\begin{document}
+
+\begin{titlepage} 
+\begin{center}
+% Upper part of the page
+%\textbf{\Large САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ} \\[1.0cm]
+%\textbf{\large Кафедра Прикладной Математики и Информатики}\\[3.5cm]
+ 
+% Title
+\textbf{}\\[10.0cm]
+\textbf{\LARGE Эконометрика}\\[0.5cm]
+\textbf{\Large ПМ-1701} \\[0.1cm]
+
+%supervisor
+\begin{center} \large
+{Преподаватель:} \\[0.5cm]
+\textsc {Курышева Светлана Владимировна }\\
+%{viktor\_chernov@mail.ru}\\
+\end{center}
+% \begin{flushright} \large
+%\emph{Рецензент:} \\
+%д.ф. - м.н., профессор \textsc{Надеемся Нам Помогут}
+%\end{flushright}
+%\begin{flushright} \large
+%\emph{Заведующий кафедрой:} \\
+%д.ф. - м.н., профессор \textsc{Не Обмани Себя}
+%\end{flushright}
+\vfill 
+
+% Bottom of the page
+{\large {Санкт-Петербург}} \par
+{\large {2020 г., 6 семестр}}
+\end{center} 
+\end{titlepage}
+
+% Table of contents
+\begin{thebibliography}{3}
+\bibitem{eliseeva}
+Эконометрика: Учебник/И.И.Елисеева и др.-М.:Проспект, 2009
+\bibitem{praktikuma}
+Практикум по эконометрике: Учебное пособие/И.И.Елисеева и др.,М.:Финансы и статистика,2006 
+\bibitem{dop1}
+Эконометрика: Учебник/В. С.Мхитарян и др.-М.:2008
+\bibitem{dop2}
+Доугерти К. Введение в эконометрику: Учебник. 2-е изд. / Пер. с англ. – М.: ИНФРА – М, 2007
+\bibitem{dop3}
+Берндт Э. Практика эконометрики: классика и современность. М.,2005
+\end{thebibliography}
+\tableofcontents
+\newpage
+\section{21.02.2020}
+
+Дана зависимость спроса от цены:
+$$ X = (5,4,6,10,18,10) $$
+$$ Y = (15,14,12,11,9,10) $$
+
+1.Необходимо построить поле корреляции и выбрать математическую функцию.
+
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[xmin = 0, xmax = 20,ymin = 0, ymax = 20, grid = major,scale = 1.5,legend pos = north west]
+		\legend{ 
+	Начальные данные
+	};
+	\addplot[scatter,only marks] coordinates { (15,5) (14,4) (12,6) (11,10) (9,18) (10,10)} ;
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
+
+По данной информации лучшей аппроксимации является нелинейная регрессия - степенная функция.
+
+2. Найти линейное уравнение, используя МНК.
+$$y = a + bx$$
+Согласно формуле (7) получаем следующую систему уравнений:
+$$ \left\{
+\begin{matrix}
+53 = 6a + 71b \\
+575 = 71a + 867b \\
+\end{matrix} \right. $$
+Из данной системы уравнений находим значения параметров регрессии $a$ и $b$:
+$$ a = 31.8385; b = -1.9441$$
+
+Построим график прямой $$\widehat{Y} = 31.8385 + -1.9441X$$
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[xmin=0,xmax=20, grid = major,scale = 1.5,domain = 0:25]
+		\legend{ 
+	Уравнение регрессии, 
+	Начальные данные
+	};
+	\addplot[dashed, model]{31.8385 -1.9441*x};
+	\addplot[scatter,only marks] coordinates { (15,5) (14,4) (12,6) (11,10) (9,18) (10,10)} ;
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
+
+Линейный коэффициент корреляции по формуле (10):
+$$ r = -0.87378$$
+
+3. Построить таблицу дисперсионного анализа:
+
+\label{first_table_analiz}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[t]{|c|c|c|c|c|} \hline
+		Источник вариации & df & $SS$ & $MS$ & F-критерий\\ \hline
+		Регрессия & 1 & 101.417 & 101.417 & 12.9127 \\ \hline
+		Остаток & 4 & 31.4161 & 7.85404 & 1 \\ \hline
+		Итого & 5 & 132.833 & 26.5667 & x \\ \hline
+		\end{tabular}
+	\caption{Таблица дисперсионного анализа для примера}
+	\end{center}
+\end{table}
+
+Найдем табличное значение распределения Фишера-Снедекора при заданном уровне значимости:
+$$ F_{1-\alpha}(n-1-m,n) = F_{0.95}(1,4) = 7.71$$
+
+4. Найти линейное уравнение регрессии, используя программу Excel.
+5. Дать интервальный прогноз спроса, предполагая, что $x_p=9$
+6. Используя Excel найти уравнение регрессии по степенной функции.
+\end{document}
+
