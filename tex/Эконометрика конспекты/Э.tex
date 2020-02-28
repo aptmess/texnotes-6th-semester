@@ -342,7 +342,7 @@ $$F=\frac {MS_R} {MS_E } =  \frac {\text{Factor Variance with 1 df} } {\text{Rem
 Для проверки гипотезы о значимости уравнения регресии воспользуемся следующим алгоритмом:
 \begin{enumerate}
 	\item Выберем в достоверной области критический уровень значимости $\alpha$. Обычно выбирают маленький уровень значимости, так как вероятность попадания в критическую область при справедливости нулевой гипотезы $H_0$ должна быть маленькой ($\alpha \approx 0.05$).
-	\item Определяется табличное критическое значение критерия Фишера $F_{table}$
+	\item Определяется табличное критическое значение критерия Фишера $F_{table}(m,n-1-m)$
 	\item Если $F>F_{table}$, то $H_0$ отвергается $\Rightarrow$ гипотеза о случайности природы отвергается и делается вывод о существенности связи и значимости $R^2$
 \end{enumerate}
 
@@ -470,7 +470,7 @@ $$ t_z > t_{\alpha} \Leftrightarrow H_0 \text{ discards} $$
 \subsubsection{Доверительные интервалы для коэффициентов регрессии}
 Если коэффициенты регрессии оказываются статистически значимыми, то можно построить \textbf{доверительный интервал} для коэффициентов регрессии:
 $$\delta_b = \pm t_{table} \cdot {m_b}$$
-$$ b - t_{1 - \frac{\alpha}{2}} \cdot {m_b} \leq b \leq b + t_{1 - \frac{\alpha}{2}} \cdot {m_b} \eqno (35)$$
+$$ b - t_{1 - \frac{\alpha}{2}}(n-2) \cdot {m_b} \leq b \leq b + t_{1 - \frac{\alpha}{2}}(n-2) \cdot {m_b} \eqno (35)$$
 
 Также стандартную среднюю ошибку для коэффициента $a$ можно выразить через $m_b$:
 $$ m_a = \sqrt{\frac{\sum (Y - \widehat{Y})^2} {n - 1 - m} \cdot \frac{\sum X^2}{n\cdot (X-\overline{X})}} = m_b \cdot \sqrt{\frac{\sum X^2}{n}} \eqno (36)$$
@@ -486,8 +486,8 @@ $$ m_{\widehat{y_x}} = \sqrt{MS_E} \sqrt{\frac{1}{n}+\frac{(x_k-\overline{X})^2}
 Величина стандартной ошибки достигает минимума при $x_k  = \overline{X} $.
 
 Для прогнозируемого значения $\widehat{y}$ доверительный интервал выглядит следующим бразом:
-$$ \widehat{y_{x_k}} \pm t_{1-\frac{\alpha}{2}} \cdot m_{\widehat{y_x}} $$
-$$ \widehat{y_{x_k}} - t_{1-\frac{\alpha}{2}} \cdot m_{\widehat{y_x}} \leq \widehat{y_{x_k}} \leq \widehat{y_p} + t_{1-\frac{\alpha}{2}} \cdot m_{\widehat{y_x}}  \eqno (38)$$
+$$ \widehat{y_{x_k}} \pm t_{1-\frac{\alpha}{2}}(n-2) \cdot m_{\widehat{y_x}} $$
+$$ \widehat{y_{x_k}} - t_{1-\frac{\alpha}{2}}(n-2) \cdot m_{\widehat{y_x}} \leq \widehat{y_{x_k}} \leq \widehat{y_p} + t_{1-\frac{\alpha}{2}}(n-2) \cdot m_{\widehat{y_x}}  \eqno (38)$$
 
 где:
 $$ \widehat{y_{x_k}} = a+b\cdot x_k $$
@@ -495,7 +495,7 @@ $$ \widehat{y_{x_k}} = a+b\cdot x_k $$
 $$ m_y = \sqrt{MS_E} \sqrt{1+\frac{1}{n}+\frac{(x_k-\overline{X})^2}{\sum(X-\overline{X})^2}} \eqno (39)$$
 
 \textbf{Доверительный интервал для $y_p$ }- предсказываемого значения регрессии:
-$$ \widehat{y_p} - t_{\alpha}m_y \leq y_p \leq \widehat{y_p} + t_{\alpha}m_y \eqno (40) $$
+$$ \widehat{y_p} - t_{1-\frac{\alpha}{2}}(n-2) m_y \leq y_p \leq \widehat{y_p} + t_{1-\frac{\alpha}{2}}(n-2) m_y \eqno (40) $$
 
 \subsubsection{Пример использования полученных знаний}
 
@@ -565,7 +565,7 @@ $$ MS_E = \frac{SS_E}{n-1-m} = \frac{263.158}{7-2} = 52.6316 $$
 Посчитаем статистику $F$-критерия: $$ F_{stat} = \frac{MS_R}{MS_E} = \frac{14736.8}{52.6316} = 280$$
 
 Найдем табличное значение распределения Фишера-Снедекора при заданном уровне значимости:
-$$ F_{1-\alpha}(m,n) = F_{0.95}(1,5) = 6.61$$
+$$ F_{1-\alpha}(m,n-1-m) = F_{0.95}(1,5) = 6.61$$
 
 \textbf{Вывод}: так как $F_{stat}  > F_{0.95} $, то нулевая гипотеза $H_0$ отвергается и делается вывод о том, что регрессия статистически значима и связь существенна.
 
