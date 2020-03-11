@@ -346,4 +346,78 @@ $$ B = \underset{y}{\min} \text{ } h(y) = 1 $$
 
 Седловой точки нет, так как $A \neq B$
 
+\section{02.03.2020}
+
+Задача 2:
+$$ f(x,y) = (x-y)^2 - 0.5y $$
+$$ -1 \leq x \leq 1,-1 \leq y \leq 1 $$
+
+\textbf{Решение:}
+В общем случае, нет стационарной точки, значит будем искать на границах.
+
+Найдем максимин:
+$$ \underset{y}{\min} \text{ } f(x,y) = (f(x,y))_y'  = -2x + 2y -0.5 = g(x)$$
+$$(f(x,y))_y'' = 2  -\text{точка минимума}$$ 
+$$ y = x + 0.25$$
+
+Из трех функций нужно было бы найти min среди трех выражений $f(x,1),f(x,-1),-0.0625x$
+$$g(x) = \max{f(x,1),f(x,-1),f(x,x+0.25)}$$
+$$ g(x) = -0.0625 - 0.5 x,\quad  x\to -1 $$
+$$ A = \underset{x}{\max} \text{ } g(x) = 0.4375 $$
+
+Найдем минимакс:
+$$ \underset{x}{\max} \text{ } f(x,y) = (f(x,y))_x'  = 2x -  2y = h(y) \Rightarrow x = y$$
+
+При каждом y свое значение максимума:
+
+Исследуем границы:
+$$ \max (1-y)^2 = 4 \text{ ;  } \max (-1-y)^2 = 4 $$
+$$h(y) = \left\{\begin{matrix}
+(1-y)^2, -1 \leq y \leq 0\\ 
+(1+y)^2, 0 \leq y \leq 1
+\end{matrix}\right.$$
+$$ B = \underset{y}{\min} \text{ } h(y) = 1 $$
+
+Седловой точки нет, так как $A \neq B$
+
+Задача 3:
+$$ f(x,y) = (x-y(1-y^2))^2 = x^2 - 2 x y + y^2 + 2 x y^3 - 2 y^4 + y^6$$
+$$ -1 \leq x \leq 1,-1 \leq y \leq 1 $$
+
+\textbf{Решение:}
+
+Обозначим за $y(1-y^2) = u$, тогда получим функцию: $f(x,u) = (x-u)^2$
+
+Для того, чтобы узнать границы, найдем минимум и максимум функции $u$:
+$$ \min (y - y^3) =-\frac{2}{3\sqrt3}$$
+$$ \max (y - y^3) = \frac{2}{3\sqrt3}$$
+
+1. Найдем максимин:
+$$ \underset{u}{\min} \text{ } f(x,u) = (f(x,u))_u'  = -2(x-u) - \text{точка минимума}$$
+$$u=x$$
+$$g(x) = \left \{
+\begin{matrix}
+(x+\frac{2}{3\sqrt3})^2 \quad -1 \leq x \leq -\frac{2}{3\sqrt3} \\
+{}\\
+  0 \qquad -\frac{2}{3\sqrt3} \leq x \leq \frac{2}{3\sqrt3} \\
+{} \\
+(x-\frac{2}{3\sqrt3})^2 \quad \frac{2}{3\sqrt3 } \leq x \leq 1
+\end{matrix}\right.$$
+
+$$ A = \underset{x}{\max} \text{ } g(x) = \left (1 - \frac{2}{3\sqrt {3}}\right)^2$$
+
+2. Найдем минимакс:
+$$ \underset{x}{\max} \text{ } f(x,u) = (f(x,u))_x'  = 2x -  2u = h(u) \Rightarrow x = u$$
+
+Исследуем границы:
+$$h(u) = \left\{
+\begin{matrix}
+(1+u)^2,\frac{2}{3\sqrt{3}}\geq u \geq 0 \\ 
+(1-u)^2, -\frac{2}{3\sqrt{3}}\leq u \leq 0
+\end{matrix}\right.$$
+
+Рисуем график и находим минимум.
+$$ B = \underset{u}{\min} \text{ } h(u) = 1 $$
+
+Седловой точки нет, так как $A \neq B$
 \end{document}
