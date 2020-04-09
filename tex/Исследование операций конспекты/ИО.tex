@@ -586,4 +586,33 @@ $$f(\frac{k}{\lambda}) = \frac{k^k}{k!}e^{-k} = \frac{1}{k!}\cdot \left (\frac{k
 $$\mathbb{E}(t) =\sum_{k=0}^{\infty} k \cdot V_k(t) = \sum_{k=1}^{\infty} k \cdot V_k(t) (2.5) = \sum_{k=1}^{\infty} k \cdot \frac{(\lambda t)^k}{k!} \cdot e^{-\lambda t} =e^{-\lambda t}  \sum_{k=1}^{\infty} \frac{(\lambda t)^k}{(k-1)!} =$$
 $$=e^{-\lambda t} \lambda t \sum_{k=1}^{\infty} \frac{(\lambda t)^{k-1}}{(k-1)!} = e^{-\lambda t} \cdot \lambda t \cdot e^{\lambda t} = \lambda t \quad \blacksquare$$
 
+
+Упражнения:
+
+Дисперсия в пуаасоновском потоке: $D = \frac{1}{\lambda^2}$:
+
+\textit{Доказательство:}
+
+$$D = \int_{0}^{\infty} (x - \mathbb{E} )^2 \cdot f(x) dx =  \int_{0}^{\infty} \left (x - \frac{1}{\lambda} \right)^2 \cdot \lambda e^{-\lambda x} dx$$
+
+$$E \xi^2 = \int_{0}^{\infty} x^2 \cdot f(x) dx = \int_{0}^{\infty} x^2 \lambda e^{-\lambda x} dx $$
+
+Проведем интегрирование по частям:
+$$ u = x^2, du = 2xdx, dv = \lambda e^{-\lambda x}, v = -e^{-\lambda x}$$
+$$ \int_{0}^{\infty} udv = uv - \int_{0}^{\infty} vdu$$
+$$\lim_{\alpha \to \infty} \int_{0}^{\infty} x^2 \lambda e^{-\lambda x} dx = \lim_{\alpha \to \infty} \left (x^2 \cdot (-e^{-\lambda x}) |^{\alpha}_{0} -  \int_{0}^{\alpha} 2x\cdot (-e^{-\lambda x}) dx \right ) = $$
+$$ = \lim_{\alpha \to \infty} \left (x^2 \cdot (-e^{-\lambda x}) |^{\alpha}_{0} + 2 \cdot \frac{1}{\lambda} \int_{0}^{\alpha} x \cdot \lambda\cdot (e^{-\lambda x}) dx \right )$$
+
+Видим, что второй предел в скобке является высчитанным на паром мат.ожиданием: $\mathbb{E} = \frac{1}{\lambda}$.
+$$E \xi^2 = \lim_{\alpha \to \infty} \left (x^2 \cdot (-e^{-\lambda x}) |^{\alpha}_{0} + \frac{2}{\lambda^2} \right ) = 0 + \frac{2}{\lambda^2} = \frac{2}{\lambda^2}$$
+
+Следовательно, дисперсия равна:
+$$ D \xi = E \xi^2 - (E \xi)^2 = \frac{2}{\lambda^2} - \frac{1}{\lambda^2} = \frac{1}{\lambda^2} \quad \blacksquare$$
+\newpage
+В дискретном пуассоновском потоке дисперсия равна $D\xi = \lambda t$:
+
+\textit{Доказательство:}
+$$E\xi^2 = \sum_{k=0}^{\infty} k^2 \cdot V_k(t) = \sum_{k=1}^{\infty} k^2 \cdot V_k(t) (2.5) = \sum_{k=1}^{\infty} k^2 \cdot \frac{(\lambda t)^k}{k!} \cdot e^{-\lambda t}=e^{-\lambda t}  \sum_{k=1}^{\infty} \frac{(\lambda t)^k}{(k-2)!} =$$
+$$=e^{-\lambda t} (\lambda t)(\lambda t +1 ) \sum_{k=1}^{\infty} \frac{(\lambda t)^{k-2}}{(k-2)!} = e^{-\lambda t} \cdot (\lambda t) \cdot (\lambda t + 1) \cdot e^{\lambda t} = (\lambda t) \cdot (\lambda t + 1)$$
+$$ D \xi = E \xi^2 - (E \xi)^2 = (\lambda t) \cdot (\lambda t + 1)- (\lambda t)^2 =  \lambda t$$
 \end{document}
