@@ -547,4 +547,43 @@ $$\lim_{t \to 0} \frac{V_{\geq 2}(t)}{V_{1}(t)} = 0 \sim \lim_{t \to 0} \frac{V_
 $$\lim_{t \to 0} \frac{V_{1}(t)}{V_{\geq 1}(t)} = \lim_{t \to 0} \frac{V_{1}(t)}{t} \cdot \lim_{t \to 0} \frac{t}{V_{\geq 1}(t)} = \lambda \frac{1}{\lambda} = 1$$
 
 В обратную сторону аналогично $\blacksquare$.
+
+\subsubsection{Определение пуассоновского потока и вычисление вероятности V0}
+\subsubsection{Вывод формул для вероятностей Vk элементарным методом}
+\subsubsection{Свойства вероятностей Vk пуассоновского потока}
+
+Вероятность $V_k(t)$ обладают следующими свойствами:
+
+1. У каждой вероятности есть единственная точка максимум и сама точка максимума находится на линии предыдщей вероятности
+
+\textit{Доказательство:}
+$$f(t) = \frac{(\lambda t)^k}{k!} \cdot e^{-\lambda t} \to \max $$
+$$\frac{\partial f(t)}{\partial t} = \frac{\lambda k (\lambda t)^{k-1}}{k!} \cdot e^{-\lambda t} - \lambda e^{-\lambda t} \frac{(\lambda t)^k}{k!} = 0$$
+$$e^{-\lambda t} \cdot \frac{(\lambda t)^{k-1}}{(k-1)!} = e^{-\lambda t} \frac{(\lambda t)^k}{k!} $$
+
+Действительно, точка максимума одна и в стационарной точке, являющейся максиумом, совпадает с предыдущей вероятностью. $\blacksquare$
+
+2. Точки максимумов располагаются равномерно 
+
+\textit{Доказательство:}
+
+При $\lambda \neq 0, k \leq 1$ и, так как $e^{-\lambda t} \neq 0 \Rightarrow$:
+$$ t^{k-1} \cdot ({\frac{\lambda}{k}t - 1})=0$$
+$$t=0, t=\frac{k}{\lambda}$$
+
+Следовательно, получили равномерную последовательность с шагом $t=\frac{k}{\lambda}$. .
+
+3. Значение точек максимумов убывают с увеличением $t$ $\blacksquare$
+
+\textit{Доказательство:}
+$$f(\frac{k}{\lambda}) = \frac{k^k}{k!}e^{-k} = \frac{1}{k!}\cdot \left (\frac{k}{e} \right )^k \sim \frac{1}{\sqrt {2\pi k}}$$
+
+Следовательность максимумов стремится к нулю, что и требовалось доказаать в данном свойстве $\blacksquare$
+\newpage
+4. Параметр $\lambda $ равен интенсивности $\mu (2.5)$.
+
+\textit{Доказательство:}
+$$\mathbb{E}(t) =\sum_{k=0}^{\infty} k \cdot V_k(t) = \sum_{k=1}^{\infty} k \cdot V_k(t) (2.5) = \sum_{k=1}^{\infty} k \cdot \frac{(\lambda t)^k}{k!} \cdot e^{-\lambda t} =e^{-\lambda t}  \sum_{k=1}^{\infty} \frac{(\lambda t)^k}{(k-1)!} =$$
+$$=e^{-\lambda t} \lambda t \sum_{k=1}^{\infty} \frac{(\lambda t)^{k-1}}{(k-1)!} = e^{-\lambda t} \cdot \lambda t \cdot e^{\lambda t} = \lambda t \quad \blacksquare$$
+
 \end{document}
