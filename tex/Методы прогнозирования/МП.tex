@@ -144,4 +144,69 @@ $$y_4 = \alpha y_3 + (1-\alpha)(\alpha y_2 + (1-\alpha)y_1) $$
 где $1-\alpha=l_3$
 
 С помощью $l_0$ можно использовать начальное значение. 
+
+\section{Функционалы качества}
+
+Пусть случайная величина $y$ распределена по следующему закону:
+$$y_i = \sum_{j=0}^m \theta_j x_{ij}+ N(0,\sigma^2) = N(\sum_{j=0}^m \theta_j x_{ij},\sigma^2)$$
+
+То есть $$\mu  = \sum_{j=0}^m \theta_j x_{ij} = \left .\bar{\theta}\right .^T \cdot \bar{x}_i $$
+
+Найдем оценку параметра $\theta$ методом максимального правдоподобия.
+
+Функция правдоподобия записывается следующим образом:
+$$L(\mu,\sigma) = \prod_{i=1}^n p(y_i,\mu,\sigma^2) = \frac{1}{(\sqrt{2\pi}\cdot \sigma)^n} \cdot e^{-\frac{1}{2}\sum\limits_{i=1}^n \frac{(y_i - \mu)^2}{\sigma^2}} \to \underset{\theta}{\max}$$
+
+Прологарифмируем:
+$$\ln L(\mu,\sigma) = \ln \left(\frac{1}{(\sqrt{2\pi}\cdot \sigma)^n}\right) + \left(-\frac{1}{2}\sum\limits_{i=1}^n \frac{(y_i - \mu)^2}{\sigma^2}\right)  =  \ln \left((\sqrt{2\pi}\cdot \sigma)^{-n}\right) -$$
+$$ -\frac{1}{2}\sum\limits_{i=1}^n \frac{(y_i - \mu)^2}{\sigma^2}  = -n \ln \sqrt{2\pi\sigma^2} - \frac{1}{2\sigma^2}\sum\limits_{i=1}^n (y_i - \mu)^2  = $$
+$$ = -\frac{n}{2} \ln (2\pi\sigma^2) -\frac{1}{2\sigma^2}\sum\limits_{i=1}^n (y_i -  \left .\bar{\theta}\right .^T \cdot \bar{x}_i)^2  \to \underset{\theta}{\max} $$
+$$Q = - \frac{1}{2\sigma^2}\sum\limits_{i=1}^n (y_i -  \left .\bar{\theta}\right .^T \cdot \bar{x}_i)^2  \to \underset{\theta}{\max}$$
+
+Пусть величина $y \in \{0,1,2,\ldots, \}$, тогда для нее применимо распределение Пуассона:
+$$y \sim Poiss(\lambda)$$
+
+Так как $\lambda $ должно быть больше нуля, то хотелось бы линейную комбинацию $(-\infty, \infty)$ переделать в промежуток $(0,\infty)$. Это можно сделать с помощью потенцирования.
+$$\log y =  \left .\bar{\theta}\right .^T \cdot \bar{x} \Rightarrow \lambda = e^{\left .\bar{\theta}\right .^T \cdot \bar{x}}$$
+
+Опять же найдем с помощью ммп логарифм функции правдоподобия
+$$P(\xi = y)  = \frac{e^{-\lambda}\cdot \lambda^y}{y!}, y \in \{0,1,2,\ldots, \} $$
+$$L(\lambda) = \prod\limits_{i=1}^n p(y_i,\lambda) = \prod\limits_{i=1}^n \frac{e^{-\lambda} \lambda^{y_i}}{y_i !}$$
+$$\ln L(\lambda) = \sum\limits_{i=1}^n \ln \frac{e^{-\lambda} \lambda^{y_i}}{y_i !} =\sum\limits_{i=1}^n (-\lambda + y_i \ln \lambda - \ln(y_i !))$$
+
+Последнее слагаемое не сожержит оцениваемого параметра $\lambda$, поэтому:
+$$Q =\sum\limits_{i=1}^n (-\lambda + y_i \ln \lambda ) \to \underset{\theta}{\max}$$
+$$Q = \sum\limits_{i=1}^n ( e^{\left .\bar{\theta}\right .^T \cdot \bar{x}}  - y_i \ln  e^{\left .\bar{\theta}\right .^T \cdot \bar{x}} ) \to \underset{\theta}{\min}$$
+
+В обобщенных линейных моделях ожидаемые значения отклика представляют
+собой линейную комбинацию предикторов, которые связаны с зависимой переменной
+через функцию связи g:
+$$\mu = g^{-1}(\left .\bar{\theta}\right .^T \cdot \bar{x}_i)$$
+$$g(\mu) = \left .\bar{\theta}\right .^T \cdot \bar{x}_i$$
+
+Для нормального распределения, изначально было положено:
+$$g(\mu) = \left .\bar{\theta}\right .^T \cdot \bar{x}_i = \mu$$
+
+Для пуассоновского распределения:
+$$g(\mu) = \log \lambda$$
+$$\mu = g^{-1}(\log \mu) = e^{\log \mu} = \mu$$
+
+Рассмотрим экспоненциальное семейство распределений:
+$$f(y,\alpha,\varphi) = exp \left[\frac{y\cdot \alpha - c(\alpha)}{\varphi} + h(y,\phi) \right]$$
+
+Для нормального распределения:
+$$f(y,\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(y-\mu)^2}{2\sigma^2}} = exp \left[-\frac{y^2}{2\sigma^2}+\frac{y \mu}{\sigma^2} -\frac{\mu^2}{2\sigma^2} - \frac{1}{2} \log (2\pi \sigma^2)\right] = $$
+$$ = exp \left[ \frac{\mu y - \frac{\mu^2}{2}}{\sigma^2} - \frac{y^2}{2\sigma^2} - \frac{1}{2} \log (2\pi \sigma^2)\right]$$
+
+Это эксопненциальное распределение с:
+$$\alpha = \mu,  c(\alpha) = \frac{\alpha^2}{2}$$
+$$E(y) = \mu  = c' (\alpha)$$
+$$D(y) = \varphi \cdot c''(\alpha) = \sigma^2 \cdot 1 = \sigma^2 $$
+$$g(\mu)  =[c']^{-1}(\mu)$$
+$$c(\mu)' = \mu =\left .\bar{\theta}\right .^T \cdot \bar{x} $$
+
+Для Пуассона:
+$$f(y,\lambda) = exp\left(\frac{y\cdot\log\lambda - \lambda}{1} - log(y!)\right)$$
+$$\alpha = \log(\lambda), \lambda = exp(\alpha), c(\alpha) = \lambda, c(\lambda) = e^{\lambda}$$
+$$\log(\lambda) = \left .\bar{\theta}\right .^T \cdot \bar{x}$$
 \end{document}
