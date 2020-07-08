@@ -1,4 +1,4 @@
-# LaTeX Lecture notes
+# LaTeX Lecture notes (archived 08.07.20)
 
 1. [Operational Research](https://github.com/aptmess/texnotes-ft.6/blob/master/tex/%D0%98%D1%81%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B9%20%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D1%8B/%D0%98%D0%9E.pdf)
 2. [Methods of Forecasting](https://github.com/aptmess/texnotes-ft.6/blob/master/tex/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D0%BF%D1%80%D0%BE%D0%B3%D0%BD%D0%BE%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F/%D0%9C%D0%9F.pdf)
@@ -9,5 +9,7 @@
 7. [Econometrics: practice](https://github.com/aptmess/texnotes-ft.6/blob/master/tex/%D0%AD%D0%BA%D0%BE%D0%BD%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D0%BA%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D1%8B/%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B0/%D0%AD_%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B0.pdf)
 
 [Exams Questions](https://github.com/aptmess/texnotes-ft.6/tree/master/tex/Exams)
+
+The semester is over, All exams were passed on excellent mark.
 
 ### 6-th semester, 2020
